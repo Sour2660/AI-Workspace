@@ -3,3 +3,5 @@ dist
 .env
 Untracked files:
 -AI-Workspace/
+uploads/
+swagger-output.json
