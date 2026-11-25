@@ -34,6 +34,7 @@ class AttachmentController {
     const attachments = await attachmentService.findAll(
       req.params.taskId
     );
+    console.log("attachments", attachments);
 
     return apiResponse(
       res,
@@ -44,6 +45,7 @@ class AttachmentController {
   });
 
   delete = asyncHandler(async (req, res) => {
+    console.log("req.params.id", req.params.id);
     await attachmentService.delete(req.params.id);
 
     return apiResponse(
