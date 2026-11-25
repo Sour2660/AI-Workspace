@@ -1,17 +1,21 @@
-import { Outlet } from "react-router-dom";
+import StatsGrid from "@/components/dashboard/StatsGrid";
 
-const DashboardLayout = () => {
+const DashboardPage = () => {
   return (
-    <div>
-      {/* Sidebar */}
+    <div className="space-y-8">
+      <div>
+        <h1 className="text-4xl font-bold text-slate-800">
+          Welcome back, Sourabh 👋
+        </h1>
 
-      {/* Topbar */}
+        <p className="mt-2 text-slate-500">
+          Here's what's happening in your workspace today.
+        </p>
+      </div>
 
-      <main>
-        <Outlet />
-      </main>
+      <StatsGrid />
     </div>
   );
 };
 
-export default DashboardLayout;
+export default DashboardPage;
