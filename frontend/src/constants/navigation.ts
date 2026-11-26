@@ -2,9 +2,13 @@ import {
   LayoutDashboard,
   Bot,
   FolderKanban,
+  FolderOpen,
+  ListTodo,
   Calendar,
   FileText,
   Settings,
+  Bell,
+  BotMessageSquare,
 } from "lucide-react";
 
 export const navigation = [
@@ -17,6 +21,26 @@ export const navigation = [
     title: "Workspace",
     path: "/workspace",
     icon: Bot,
+  },
+  {
+    title: "Projects",
+    path: "/projects",
+    icon: FolderOpen,
+  },
+  {
+    title: "Tasks",
+    path: "/tasks",
+    icon: ListTodo,
+  },
+  {
+    title: "AI Assistant",
+    path: "/assistant",
+    icon: BotMessageSquare,
+  },
+  {
+    title: "Notifications",
+    path: "/notifications",
+    icon: Bell,
   },
   {
     title: "Kanban",

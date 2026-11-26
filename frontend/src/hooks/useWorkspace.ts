@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import workspaceService from "@/features/workspace/workspace.service";
 import { useWorkspaceStore } from "@/store/workspace.store";
 
@@ -7,44 +8,50 @@ import type {
 } from "@/types/workspace";
 
 export const useWorkspace = () => {
-  const store = useWorkspaceStore();
+  const workspaces = useWorkspaceStore((state) => state.workspaces);
+  const currentWorkspace = useWorkspaceStore(
+    (state) => state.currentWorkspace
+  );
+  const setWorkspaces = useWorkspaceStore((state) => state.setWorkspaces);
+  const setCurrentWorkspace = useWorkspaceStore(
+    (state) => state.setCurrentWorkspace
+  );
 
-  const getAll = async () => {
+  const getAll = useCallback(async () => {
     const res = await workspaceService.getAll();
-    store.setWorkspaces(res.data.data);
+    setWorkspaces(res.data.data);
     return res.data.data;
-  };
+  }, [setWorkspaces]);
 
-  console.log("useWorkspace Hook Loaded");
-
-  const getById = async (id: string) => {
+  const getById = useCallback(async (id: string) => {
     const res = await workspaceService.getById(id);
-    store.setCurrentWorkspace(res.data.data);
+    setCurrentWorkspace(res.data.data);
     return res.data.data;
-  };
+  }, [setCurrentWorkspace]);
 
-  const create = async (data: CreateWorkspaceRequest) => {
+  const create = useCallback(async (data: CreateWorkspaceRequest) => {
     const res = await workspaceService.create(data);
     await getAll();
     return res.data.data;
-  };
+  }, [getAll]);
 
-  const update = async (
+  const update = useCallback(async (
     id: string,
     data: UpdateWorkspaceRequest
   ) => {
     const res = await workspaceService.update(id, data);
     await getAll();
     return res.data.data;
-  };
+  }, [getAll]);
 
-  const archive = async (id: string) => {
+  const archive = useCallback(async (id: string) => {
     await workspaceService.archive(id);
     await getAll();
-  };
+  }, [getAll]);
 
   return {
-    ...store,
+    workspaces,
+    currentWorkspace,
     getAll,
     getById,
     create,

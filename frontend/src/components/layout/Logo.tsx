@@ -6,11 +6,11 @@ const Logo = () => {
       </div>
 
       <div>
-        <h2 className="text-lg font-bold text-slate-800">
+        <h2 className="text-lg font-bold text-foreground">
           FlowDesk
         </h2>
 
-        <p className="text-xs text-slate-500">
+        <p className="text-xs text-muted-foreground">
           AI Workspace
         </p>
       </div>

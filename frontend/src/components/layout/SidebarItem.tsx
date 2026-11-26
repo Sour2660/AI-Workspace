@@ -5,21 +5,24 @@ interface SidebarItemProps {
   title: string;
   path: string;
   icon: LucideIcon;
+  onNavigate?: () => void;
 }
 
 const SidebarItem = ({
   title,
   path,
   icon: Icon,
+  onNavigate,
 }: SidebarItemProps) => {
   return (
     <NavLink
       to={path}
+      onClick={onNavigate}
       className={({ isActive }) =>
         `flex items-center gap-3 rounded-xl px-4 py-3 transition-all ${
           isActive
-            ? "bg-indigo-600 text-white"
-            : "text-slate-700 hover:bg-slate-100"
+            ? "bg-primary text-primary-foreground"
+            : "text-foreground hover:bg-muted"
         }`
       }
     >

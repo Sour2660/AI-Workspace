@@ -1,5 +1,5 @@
-import WorkspaceCard from "./WorkspaceCard";
-import type { Workspace } from "../../types/workspace";
+import WorkspaceCard from "@/features/workspace/WorkspaceCard";
+import type { Workspace } from "@/types/workspace";
 
 interface Props {
   workspaces: Workspace[];
@@ -8,8 +8,11 @@ interface Props {
 const WorkspaceGrid = ({ workspaces }: Props) => {
   if (!workspaces.length) {
     return (
-      <div className="py-16 text-center text-gray-500">
-        No workspace found.
+      <div className="rounded-2xl border border-dashed px-6 py-16 text-center">
+        <h2 className="font-semibold">No workspaces found</h2>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Create a workspace or try another search.
+        </p>
       </div>
     );
   }
