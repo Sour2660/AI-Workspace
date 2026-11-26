@@ -22,10 +22,12 @@ class AttachmentService {
   }
 
   async findAll(taskId: string) {
+    console.log("taskId", taskId);
     return attachmentRepository.findByTask(taskId);
   }
 
   async delete(id: string) {
+    console.log("id", id);
     const attachment = await attachmentRepository.findById(id);
 
     if (!attachment) {

@@ -34,6 +34,7 @@ class ProjectService {
   }
 
   async findById(id: string) {
+    console.log("service", id);
     const project = await projectRepository.findById(id);
 
     if (!project) {
